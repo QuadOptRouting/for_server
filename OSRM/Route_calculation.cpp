@@ -1,20 +1,7 @@
-
-//
-// Created by alexander on 15.04.17.
-//
-
 #include "Route_calculation.h"
 
-Route_calculation::Route_calculation(){
-    EngineConfig temp;
-    config.storage_config = {"OSRM/RU_MOW.osrm"};
-    config.use_shared_memory = false;
-    // osrm::EngineConfig config;
-    // config.storage_config = {"OSRM/RU_MOW.osrm"};
-    // config.use_shared_memory = false;
-    // osrm::OSRM temp{config};
-    // ;
-    _osrm(temp);
+Route_calculation::Route_calculation(EngineConfig temp):_osrm(temp){
+
 }
 
 double Route_calculation::calculate(std::pair<double, double> start, std::pair<double, double> finish) {

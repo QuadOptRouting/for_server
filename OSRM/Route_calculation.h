@@ -29,9 +29,6 @@
 
 using namespace osrm;
 using namespace osrm::engine;
-// EngineConfig config();
-// config.storage_config = {"OSRM/RU_MOW.osrm"};
-// config.use_shared_memory = false;
 
 // Configure based on a .osrm base path, and no datasets in shared mem from osrm-datastore
 //EngineConfig config;
@@ -42,14 +39,13 @@ using namespace osrm::engine;
 
 class Route_calculation {
 public:
-    Route_calculation();
+    Route_calculation(EngineConfig temp);
     double calculate(std::pair<double, double> start, std::pair<double, double> finish);
     ~Route_calculation() = default;
 
 private:
     OSRM _osrm;
 };
-
 
 
 #endif //BD_CLASS_ROUTE_CALCULATION_H
