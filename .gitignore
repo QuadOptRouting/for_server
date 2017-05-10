@@ -1,4 +1,3 @@
-OSRM/*
 build/*
 cmake-build-debug/*
 *.out
