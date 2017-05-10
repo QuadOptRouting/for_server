@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/alexander/project/OSRM",
+  "command": "/usr/bin/g++     -g3 -gdwarf-2   -std=gnu++14 -o CMakeFiles/OSRM.dir/Route_calculation.cpp.o -c /home/alexander/project/OSRM/Route_calculation.cpp",
+  "file": "/home/alexander/project/OSRM/Route_calculation.cpp"
+}
+]
