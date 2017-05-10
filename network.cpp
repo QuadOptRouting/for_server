@@ -20,10 +20,12 @@ void session::handle(std::size_t length){
     rapidjson::Document mess;
     mess.SetObject();
     message_ = std::string(data_, length);
-    std::cout << length << ": "<< message_.length()<< std::endl;
+    std::cout << message_ << ": "<< message_.length()<< std::endl;
     if(!mess.Parse(message_.c_str()).HasParseError()){
         std::cout<< "result: "<<mess["message"].GetString() << std::endl;
     }
+    data_[length++] ='#';
+//    data_[length++] ='#';
     do_write(length);
 }
 
