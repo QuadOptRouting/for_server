@@ -1,5 +1,5 @@
 OSRM/*
 build/*
 cmake-build-debug/*
-rapidjson/*
 *.out
+.idea/*

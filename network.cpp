@@ -17,8 +17,13 @@ void session::do_read() {
 }
 
 void session::handle(std::size_t length){
-    message_ = std::string(data_, length) + std::string(data_, length);
+    rapidjson::Document mess;
+    mess.Clear();
+    message_ = std::string(data_, length);
     std::cout << length << ": "<< message_.length()<< std::endl;
+    if(!mess.Parse(message_.c_str()).HasParseError()){
+        std::cout<< "result: "<<mess["message"].GetString() << std::endl;
+    }
     do_write(length);
 }
 

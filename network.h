@@ -11,6 +11,9 @@
 #include <utility>
 #include <string>
 #include <boost/asio.hpp>
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
 
 using boost::asio::ip::tcp;
 
