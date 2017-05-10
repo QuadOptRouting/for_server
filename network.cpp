@@ -35,8 +35,7 @@ void session::handle(std::size_t length){
     std::pair<double, double> start(lon, lat), finish(37.812997, 55.807517);
     result = ex.calculate(start, finish);
     std::cout << "time: "<<result << std::endl;
-    data_[length++] ='#';
-//    data_[length++] ='#';
+    message_ = std::to_string(result);
     do_write(length);
 }
 
