@@ -14,6 +14,8 @@
 #include "rapidjson/document.h"
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
+#include "OSRM/Route_calculation.h"
+#include "osrm/engine_config.hpp"
 
 using boost::asio::ip::tcp;
 

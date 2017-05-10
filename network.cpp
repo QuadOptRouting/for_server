@@ -24,6 +24,14 @@ void session::handle(std::size_t length){
     if(!mess.Parse(message_.c_str()).HasParseError()){
         std::cout<< "result: "<<mess["message"].GetString() << std::endl;
     }
+    osrm::engine::EngineConfig temp;
+    temp.storage_config = {"OSRM/RU-MOW.osrm"};
+    temp.use_shared_memory = false;
+    Route_calculation ex(temp);
+    double result;
+    std::pair<double, double> start(37.414743, 55.737849), finish(37.812997, 55.807517);
+    result = ex.calculate(start, finish);
+    std::cout <<result << std::endl;
     data_[length++] ='#';
 //    data_[length++] ='#';
     do_write(length);
