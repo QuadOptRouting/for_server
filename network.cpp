@@ -18,7 +18,7 @@ void session::do_read() {
 
 void session::handle(std::size_t length){
     rapidjson::Document mess;
-    mess.Clear();
+    mess.SetObject();
     message_ = std::string(data_, length);
     std::cout << length << ": "<< message_.length()<< std::endl;
     if(!mess.Parse(message_.c_str()).HasParseError()){
