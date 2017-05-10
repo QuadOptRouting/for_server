@@ -17,19 +17,22 @@ void session::do_read() {
 }
 
 void session::handle(std::size_t length){
+    double lon, lat;
     rapidjson::Document mess;
     mess.SetObject();
     message_ = std::string(data_, length);
     std::cout << message_ << ": "<< message_.length()<< std::endl;
     if(!mess.Parse(message_.c_str()).HasParseError()){
-        std::cout<< "result: "<<mess["message"].GetString() << std::endl;
+        lon = mess["lon"].GetDouble();
+        lat = mess["lat"].GetDouble();
+        std::cout <<"lon = " << lon << ", lat = " << lat << std::endl;
     }
     osrm::engine::EngineConfig temp;
     temp.storage_config = {"for_server/OSRM/osrm/RU-MOW.osrm"};
     temp.use_shared_memory = false;
     Route_calculation ex(temp);
     double result;
-    std::pair<double, double> start(37.414743, 55.737849), finish(37.812997, 55.807517);
+    std::pair<double, double> start(lon, lat), finish(37.812997, 55.807517);
     result = ex.calculate(start, finish);
     std::cout << "time: "<<result << std::endl;
     data_[length++] ='#';
