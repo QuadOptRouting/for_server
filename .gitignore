@@ -2,3 +2,4 @@ build/*
 cmake-build-debug/*
 *.out
 .idea/*
+OSRM/cmake-build-debug/*
