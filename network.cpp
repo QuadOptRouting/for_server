@@ -25,7 +25,7 @@ void session::handle(std::size_t length){
         std::cout<< "result: "<<mess["message"].GetString() << std::endl;
     }
     osrm::engine::EngineConfig temp;
-    temp.storage_config = {"OSRM/osrm/RU-MOW.osrm"};
+    temp.storage_config = {"for_server/OSRM/osrm/RU-MOW.osrm"};
     temp.use_shared_memory = false;
     Route_calculation ex(temp);
     double result;
