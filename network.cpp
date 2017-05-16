@@ -6,12 +6,12 @@
 
 void session::do_read() {
     auto self(shared_from_this());
-    socket_.async_read_some(boost::asio::buffer(message_),
+    socket_.async_read_some(boost::asio::buffer(data_, max_length),
                             [this, self](boost::system::error_code ec, std::size_t length)
                             {
                                 if (!ec)
                                 {
-                                    handle(message_.length());
+                                    handle(length);
                                 }
                             });
 }
@@ -21,7 +21,7 @@ void session::handle(std::size_t length){
     std::vector<std::pair<unsigned, unsigned>> list_drugs;
     rapidjson::Document mess;
     mess.SetObject();
-    //message_ = std::string(data_, length);
+    message_ = std::string(data_, length);
     std::cout << message_ << ": "<< message_.length()<< std::endl;
     if(!mess.Parse(message_.c_str()).HasParseError()){
         lon = mess["Coordinates"]["Longitude"].GetDouble();
