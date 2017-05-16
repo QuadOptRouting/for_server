@@ -34,6 +34,8 @@ private:
     void handle(std::size_t length);
     void do_write(std::size_t length);
 
+//    std::string<std::pair<unsigned, unsigned>> pars()
+
     tcp::socket socket_;
     enum { max_length = 1024 };
     char data_[max_length];
