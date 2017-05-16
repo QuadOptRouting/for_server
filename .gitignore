@@ -4,3 +4,4 @@ cmake-build-debug/*
 .idea/*
 OSRM/cmake-build-debug/*
 OSRM/osrm/RU-MOW*
+*.user

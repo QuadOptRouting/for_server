@@ -29,6 +29,11 @@ public:
         do_read();
     }
 
+    void stop(){
+        socket_.close();
+    }
+
+
 private:
     void do_read();
     void handle(std::size_t length);

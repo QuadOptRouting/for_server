@@ -34,6 +34,9 @@ void session::handle(std::size_t length){
             list_drugs.push_back(temp);
         }
         std::cout <<"lon = " << lon << ", lat = " << lat << std::endl;
+        for(size_t i = 0; i < list_drugs.size(); ++i){
+            std::cout << i << " -   Id: " << list_drugs[i].first << ", count: " << list_drugs[i].second << std::endl;
+        }
     }
 
 
