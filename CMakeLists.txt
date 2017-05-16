@@ -62,5 +62,3 @@ find_package(LibOSRM REQUIRED)
 target_link_libraries(1 ${LibOSRM_LIBRARIES} ${LibOSRM_DEPENDENT_LIBRARIES})
 include_directories(SYSTEM ${LibOSRM_INCLUDE_DIRS})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LibOSRM_CXXFLAGS}")
-
-include_directories(${YOUR_DIRECTORY}/db)
