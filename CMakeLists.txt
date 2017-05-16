@@ -8,11 +8,12 @@ set(SOURCE_FILES
         server.cpp server.h
         network.cpp network.h
         OSRM/Route_calculation.cpp OSRM/Route_calculation.h
-        db_class.cpp db_class.h
-        db_conn_class.cpp db_conn_class.h
-        db_conn_properties.cpp db_conn_properties.h
-        db_request.cpp db_request.h
-        db_table_class.cpp db_table_class.h)
+#        db/db_class.cpp db/db_class.h
+#        db/db_conn_class.cpp db/db_conn_class.h
+#        db/db_conn_properties.cpp db/db_conn_properties.h
+#        db/db_request.cpp db/db_request.h
+#        db/db_table_class.cpp db/db_table_class.h)
+        )
 
 add_executable(1 ${SOURCE_FILES})
 
@@ -62,3 +63,5 @@ find_package(LibOSRM REQUIRED)
 target_link_libraries(1 ${LibOSRM_LIBRARIES} ${LibOSRM_DEPENDENT_LIBRARIES})
 include_directories(SYSTEM ${LibOSRM_INCLUDE_DIRS})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LibOSRM_CXXFLAGS}")
+
+include_directories(${YOUR_DIRECTORY}/db)
