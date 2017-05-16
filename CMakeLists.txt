@@ -4,7 +4,15 @@ project(1)
 set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
-        1.cpp server.cpp server.h network.cpp network.h OSRM/Route_calculation.cpp OSRM/Route_calculation.h)
+        1.cpp
+        server.cpp server.h
+        network.cpp network.h
+        OSRM/Route_calculation.cpp OSRM/Route_calculation.h
+        db/db_class.cpp db/db_class.h
+        db/db_conn_class.cpp db/db_conn_class.h
+        db/db_conn_properties.cpp db/db_conn_properties.h
+        db/db_request.cpp db/db_request.h
+        db/db_table_class.cpp db/db_table_class.h)
 
 add_executable(1 ${SOURCE_FILES})
 

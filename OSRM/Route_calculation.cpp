@@ -26,3 +26,28 @@ double Route_calculation::calculate(std::pair<double, double> start, std::pair<d
     }
 
 }
+
+std::vector<double> Route_calculation::calculate_from_point_to_vector(std::pair<double, double> start, std::vecotr<std::pair<double, double>> finish){
+    std::vector<double> result;
+    for(size_t i = 0; i < finish.size(); ++i){
+        result.push_back(this->calculate(start, finish[i]));
+    }
+    return result;
+}
+
+std::vector<std::vector<double>> Route_calculation::calculate_time_matrix(std::vecotr<std::pair<double, double>> start, std::vecotr<std::pair<double, double>> finish){
+    std::vector<std::vector<double>> result;
+    for(size_t i = 0 ; i < start.size(); ++i){
+        result.push_back(this->calculate_from_point_to_vector(start[i], finish));
+    }
+    return result;
+}
+
+std::vector<double> Route_calculation::calculate_time_vector(std::vecotr<std::pair<double, double>> start, std::vecotr<std::pair<double, double>> finish){
+    std::vector<double> result;
+    for(size_t i = 0 ; i < start.size(); ++i){
+        res = calculate_from_point_to_vector(start[i], finish);
+        result.push_back(result.end(), res.begin(), res.end());
+    }
+    return result;
+}
