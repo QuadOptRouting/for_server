@@ -6,7 +6,7 @@
 
 void session::do_read() {
     auto self(shared_from_this());
-    socket_.async_read_some(boost::asio::buffer(message_),
+    socket_.async_read_some(boost::asio::buffer(data_, max_length),
                             [this, self](boost::system::error_code ec, std::size_t length)
                             {
                                 if (!ec)
@@ -18,15 +18,25 @@ void session::do_read() {
 
 void session::handle(std::size_t length){
     double lon, lat;
+    std::vector<std::pair<unsigned, unsigned>> list_drugs;
     rapidjson::Document mess;
     mess.SetObject();
-    //message_ = std::string(data_, length);
+    message_ = std::string(data_, length);
     std::cout << message_ << ": "<< message_.length()<< std::endl;
     if(!mess.Parse(message_.c_str()).HasParseError()){
-        lon = mess["lon"].GetDouble();
-        lat = mess["lat"].GetDouble();
+        lon = mess["Coordinates"]["Longitude"].GetDouble();
+        lat = mess["Coordinates"]["Latitude"].GetDouble();
+        const rapidjson::Value& list = mess["List"];
+        for(size_t i = 0; i < list.Size(); ++i){
+            std::pair<unsigned ,unsigned > temp;
+            temp.first = list[i]["Id"].GetUint();
+            temp.second = list[i]["Count"].GetUint();
+            list_drugs.push_back(temp);
+        }
         std::cout <<"lon = " << lon << ", lat = " << lat << std::endl;
     }
+
+
     osrm::engine::EngineConfig temp;
     temp.storage_config = {"for_server/OSRM/osrm/RU-MOW.osrm"};
     temp.use_shared_memory = false;

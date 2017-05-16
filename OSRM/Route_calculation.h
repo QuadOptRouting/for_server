@@ -42,9 +42,9 @@ class Route_calculation {
 public:
     Route_calculation(EngineConfig temp);
     double calculate(std::pair<double, double> start, std::pair<double, double> finish);
-    std::vector<double> calculate_from_point_to_vector(std::pair<double, double> start, std::vecotr<std::pair<double, double>> finish);
-    std::vector<std::vector<double>> calculate_time_matrix(std::vecotr<std::pair<double, double>> start, std::vecotr<std::pair<double, double>> finish);
-    std::vector<double> calculate_time_vector(std::vecotr<std::pair<double, double>> start, std::vecotr<std::pair<double, double>> finish);
+    std::vector<double> calculate_from_point_to_vector(std::pair<double, double> start, std::vector<std::pair<double, double>> finish);
+    std::vector<std::vector<double>> calculate_time_matrix(std::vector<std::pair<double, double>> start, std::vector<std::pair<double, double>> finish);
+    std::vector<double> calculate_time_vector(std::vector<std::pair<double, double>> start, std::vector<std::pair<double, double>> finish);
     ~Route_calculation() = default;
 
 private:
