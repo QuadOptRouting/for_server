@@ -27,7 +27,7 @@ double Route_calculation::calculate(std::pair<double, double> start, std::pair<d
 
 }
 
-std::vector<double> Route_calculation::calculate_from_point_to_vector(std::pair<double, double> start, std::vecotr<std::pair<double, double>> finish){
+std::vector<double> Route_calculation::calculate_from_point_to_vector(std::pair<double, double> start, std::vector<std::pair<double, double>> finish){
     std::vector<double> result;
     for(size_t i = 0; i < finish.size(); ++i){
         result.push_back(this->calculate(start, finish[i]));
@@ -35,7 +35,7 @@ std::vector<double> Route_calculation::calculate_from_point_to_vector(std::pair<
     return result;
 }
 
-std::vector<std::vector<double>> Route_calculation::calculate_time_matrix(std::vecotr<std::pair<double, double>> start, std::vecotr<std::pair<double, double>> finish){
+std::vector<std::vector<double>> Route_calculation::calculate_time_matrix(std::vector<std::pair<double, double>> start, std::vector<std::pair<double, double>> finish){
     std::vector<std::vector<double>> result;
     for(size_t i = 0 ; i < start.size(); ++i){
         result.push_back(this->calculate_from_point_to_vector(start[i], finish));
