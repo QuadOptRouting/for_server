@@ -45,7 +45,7 @@ std::vector<std::vector<double>> Route_calculation::calculate_time_matrix(std::v
 
 std::vector<double> Route_calculation::calculate_time_vector(std::vector<std::pair<double, double>> start, std::vector<std::pair<double, double>> finish){
     std::vector<double> result;
-    double res;
+    std::vector<double> res;
     for(size_t i = 0 ; i < start.size(); ++i){
         res = calculate_from_point_to_vector(start[i], finish);
         result.push_back(result.end(), res.begin(), res.end());
