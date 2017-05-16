@@ -48,7 +48,7 @@ std::vector<double> Route_calculation::calculate_time_vector(std::vector<std::pa
     std::vector<double> res;
     for(size_t i = 0 ; i < start.size(); ++i){
         res = calculate_from_point_to_vector(start[i], finish);
-        result.push_back(result.end(), res.begin(), res.end());
+        result.insert(result.end(), res.begin(), res.end());
     }
     return result;
 }
