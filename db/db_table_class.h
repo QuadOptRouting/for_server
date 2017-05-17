@@ -22,6 +22,7 @@ public:
     int get_id();
     
     std::string to_string();
+    std::string get_name();
     
     void set_id(char* db_drugstore_id);
 	void set_longitude(char* db_longitude);
@@ -59,13 +60,15 @@ class drug
 {
 private:
 
-    int id;
     std::string name;
-//    std::string international_name;
 
+protected:
+    int id;
+    
 public:
 
     int get_id();
+    std::string get_name();
     
 	void set_id(char* db_drug_id);
 	void set_name(char* db_drug_name);
@@ -79,16 +82,25 @@ class relation
 {
 private:
 
+    int price;
+
+protected:
+
     int drugstore_id;
     int drug_id;
-    int price;
-    int count;
-
+    size_t count;
+    
 public:
 
+    int get_total_price();
+    int get_price();
+    int get_drug_id();
+    int get_drugstore_id();
+    size_t get_count();
+    
     void set_drugstore_id(char* db_id_drugstore);
     void set_drug_id(char* db_id_drug);
-	void set_price(char* db_price);
+    void set_price(char* db_price);
     void set_count(char* db_count);
 
 };
