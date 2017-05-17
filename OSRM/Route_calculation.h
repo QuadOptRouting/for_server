@@ -48,10 +48,10 @@ class Route_calculation_interface{
 class Route_calculation : public Route_calculation_interface{
 public:
     Route_calculation(OSRM* osrm_t);
-    virtual double calculate(std::pair<double, double> start, std::pair<double, double> finish);
-    virtual std::vector<double> calculate_from_point_to_vector(std::pair<double, double> start, std::vector<std::pair<double, double>> finish);
-    virtual std::vector<std::vector<double>> calculate_time_matrix(std::vector<std::pair<double, double>> start, std::vector<std::pair<double, double>> finish);
-    virtual std::vector<double> calculate_time_vector(std::vector<std::pair<double, double>> start, std::vector<std::pair<double, double>> finish);
+    double calculate(std::pair<double, double> start, std::pair<double, double> finish);
+    std::vector<double> calculate_from_point_to_vector(std::pair<double, double> start, std::vector<std::pair<double, double>> finish);
+    std::vector<std::vector<double>> calculate_time_matrix(std::vector<std::pair<double, double>> start, std::vector<std::pair<double, double>> finish);
+    std::vector<double> calculate_time_vector(std::vector<std::pair<double, double>> start, std::vector<std::pair<double, double>> finish);
     ~Route_calculation() = default;
 
 private:

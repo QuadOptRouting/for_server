@@ -42,16 +42,28 @@ void session::handle(std::size_t length){
 
     osrm::engine::EngineConfig temp;
 
-    temp.storage_config = {"for_server/OSRM/osrm/RU-MOW.osrm"};
+    temp.storage_config = {"../OSRM/osrm/RU-MOW.osrm"};
     temp.use_shared_memory = false;
     osrm::OSRM osrm_t(temp);
     Route_calculation ex(&osrm_t);
     double result;
     std::pair<double, double> start(lon, lat), finish(37.812997, 55.807517);
     result = ex.calculate(start, finish);
+
+
+    rapidjson::StringBuffer buf;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buf);
+    writer.StartObject();
+    writer.Key("Time");
+    writer.Double(result);
+    writer.EndObject();
+
+
     std::cout << "time: "<<result << std::endl;
-    message_ = std::to_string(result);
+    message_ = buf.GetString();
+    std::cout << message_ << std::endl;
     do_write(length);
+
 }
 
 void session::do_write(std::size_t length)
