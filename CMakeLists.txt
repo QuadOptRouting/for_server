@@ -3,21 +3,23 @@ project(1)
 
 set(CMAKE_CXX_STANDARD 14)
 
+#set_target_properties(${TARGET} PROPERTIES LINKER_LANGUAGE CXX)
+
 set(SOURCE_FILES
         1.cpp
         server.cpp server.h
         network.cpp network.h
         OSRM/Route_calculation.cpp OSRM/Route_calculation.h
-#        db/db_class.cpp db/db_class.h
-#        db/db_conn_class.cpp db/db_conn_class.h
-#        db/db_conn_properties.cpp db/db_conn_properties.h
-#        db/db_request.cpp db/db_request.h
-#        db/db_table_class.cpp db/db_table_class.h)
+        db/db_class.cpp db/db_class.h
+        db/db_conn_class.cpp db/db_conn_class.h
+        db/db_conn_properties.cpp db/db_conn_properties.h
+        db/db_request.cpp db/db_request.h
+        db/db_table_class.cpp db/db_table_class.h
         )
 
 add_executable(1 ${SOURCE_FILES})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pqlib")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lpq ")
 
 set(BOOST_COMPONENTS system thread filesystem date_time)
 # Late 2017 TODO: remove the following checks and always use std::regex
@@ -64,4 +66,6 @@ target_link_libraries(1 ${LibOSRM_LIBRARIES} ${LibOSRM_DEPENDENT_LIBRARIES})
 include_directories(SYSTEM ${LibOSRM_INCLUDE_DIRS})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LibOSRM_CXXFLAGS}")
 
-include_directories(${YOUR_DIRECTORY}/db)
+#include_directories(${YOUR_DIRECTORY}/db)
+#add_executable(1 db/db_class.cpp)
+set_target_properties(1 PROPERTIES LINKER_LANGUAGE CXX)

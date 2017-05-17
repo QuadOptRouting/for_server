@@ -1,7 +1,7 @@
 #ifndef DB_CONN_CLASS_H
 #define DB_CONN_CLASS_H
 #include <memory>
-#include <db_conn_properties.h>
+#include "db_conn_properties.h"
 #include </usr/include/postgresql/libpq-fe.h>
 
 class db_connection

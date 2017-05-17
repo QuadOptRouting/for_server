@@ -1,6 +1,6 @@
 #include "Route_calculation.h"
 
-Route_calculation::Route_calculation(EngineConfig temp):_osrm(temp){
+Route_calculation::Route_calculation(OSRM* osrm_t):osrm_(osrm_t){
 
 }
 
@@ -11,7 +11,7 @@ double Route_calculation::calculate(std::pair<double, double> start, std::pair<d
 
     // Response is in JSON format
     osrm::json::Object result;
-    const auto status = _osrm.Route(params, result);
+    const auto status = osrm_->Route(params, result);
 
     if (status == osrm::Status::Ok)
     {

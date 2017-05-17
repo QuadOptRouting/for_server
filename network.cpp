@@ -41,9 +41,11 @@ void session::handle(std::size_t length){
 
 
     osrm::engine::EngineConfig temp;
+
     temp.storage_config = {"for_server/OSRM/osrm/RU-MOW.osrm"};
     temp.use_shared_memory = false;
-    Route_calculation ex(temp);
+    osrm::OSRM osrm_t(temp);
+    Route_calculation ex(&osrm_t);
     double result;
     std::pair<double, double> start(lon, lat), finish(37.812997, 55.807517);
     result = ex.calculate(start, finish);
