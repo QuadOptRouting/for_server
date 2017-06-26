@@ -21,13 +21,14 @@ using boost::asio::ip::tcp;
 class server
 {
 public:
-    server(boost::asio::io_service& io_service, short port);
+    server(boost::asio::io_service& io_service, short port, std::string pswd);
 
 private:
     void do_accept();
 
     tcp::acceptor acceptor_;
     tcp::socket socket_;
+    std::string db_pswd;
 };
 
 

@@ -16,15 +16,15 @@
 int main(int argc, char* argv[]) {
     try
     {
-        if (argc != 2)
+        if (argc != 3)
         {
-            std::cerr << "Usage: async_tcp_echo_server <port>\n";
+            std::cerr << "Usage: async_tcp_echo_server <port> <password for DB>\n";
             return 1;
         }
 
         boost::asio::io_service io_service;
 
-        server s(io_service, std::atoi(argv[1]));
+        server s(io_service, std::atoi(argv[1]), std::string(argv[2]));
 
         io_service.run();
     }
