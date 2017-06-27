@@ -54,6 +54,7 @@ void session::handle(std::size_t length){
     std::vector<std::pair<int, std::string>> possibleDrugs; // possible pairs id-name for current query
 
     message_ = std::string(data_, length);
+    std::cout << "Reuest: " << message_ << std::endl;
 
     rapidjson::Document mess;
     mess.SetObject();
@@ -109,6 +110,7 @@ void session::handle(std::size_t length){
         /* exceptions */
     }
 
+    std::cout << "Response: " << message_ << std::endl;
 /*
     osrm::engine::EngineConfig temp;
 

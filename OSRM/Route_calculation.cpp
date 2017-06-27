@@ -18,6 +18,8 @@ double Route_calculation::calculate(std::pair<double, double> start, std::pair<d
         auto &routes = result.values["routes"].get<osrm::json::Array>();
         auto &route = routes.values.at(0).get<osrm::json::Object>();
         const auto duration = route.values["duration"].get<osrm::json::Number>().value;
+        std::cout << "Route_calculation from (" << start.first << "), (" << start.second << ") to (" <<
+                  finish.first << ") result:" << finish.second << duration << std::endl;
         return duration;
     }
     else if (status == osrm::Status::Error)
